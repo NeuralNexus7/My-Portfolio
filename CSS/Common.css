@@ -1,0 +1,36 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+background: linear-gradient(
+    135deg,
+    #0f0f0f 0%,
+    #1a1a1a 25%,
+    #350c0c 50%,
+    #440d0d 75%,
+    #7a1515 100%
+);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+#home,
+#about,
+#skills,
+#projects,
+#contact{
+    min-height:100vh;
+    padding-top:100px;
+}

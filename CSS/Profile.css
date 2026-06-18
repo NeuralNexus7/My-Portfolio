@@ -1,0 +1,181 @@
+#profile{
+    min-height:100vh;
+    padding:150px 8%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* CARDS WRAPPER */
+
+.cards-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* CARD */
+
+.card-container{
+    width:160px;
+    height:280px;
+
+    margin-left:-30px;
+
+    perspective:1000px;
+
+    opacity:0;
+    transform:translateX(-120px);
+
+    position:relative;
+}
+
+/* Initial stacking */
+
+.card-container:nth-child(1){
+    z-index:1;
+}
+
+.card-container:nth-child(2){
+    z-index:2;
+}
+
+/* Bring hovered card to front */
+
+.card-container:hover{
+    z-index:999;
+}
+
+.card{
+    width:100%;
+    height:100%;
+
+    position:relative;
+
+    transform-style:preserve-3d;
+    transition:transform .9s ease;
+
+    will-change:transform;
+}
+
+/* FLIP EFFECT */
+
+.card-container:nth-child(1):hover .card{
+    transform:
+        rotate(-5deg)
+        rotateY(180deg)
+        translateZ(80px)
+        scale(1.05);
+}
+
+.card-container:nth-child(2):hover .card{
+    transform:
+        rotate(5deg)
+        rotateY(180deg)
+        translateZ(80px)
+        scale(1.05);
+}
+
+.card1{
+    transform:rotate(-5deg);
+}
+
+.card2{
+    transform:rotate(5deg);
+}
+
+.card-front,
+.card-back{
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    padding:20px;
+
+    border-radius:16px;
+    border: 2px solid black;
+
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+.card-front{
+    overflow:hidden;
+}
+
+.card-back{
+    transform:rotateY(180deg);
+}
+
+.card1 .card-back{
+    background:linear-gradient(
+        135deg,
+        #ff7700,
+        #ffdbae
+    );
+}
+
+.card2 .card-back{
+    background:linear-gradient(
+        135deg,
+        #610033,
+        #dc949e
+    );
+}
+
+.card-bg-image{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:400%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.card1 .card-bg-image{
+    left:-100%;
+}
+
+.card2 .card-bg-image{
+    left:-200%;
+}
+
+.heading{
+    position:relative;
+    z-index:5;
+
+    color:white;
+    text-shadow:0 2px 10px rgba(0,0,0,.8);
+}
+
+/* PROFILE ANIMATION */
+
+.cards-wrapper.show .card-container{
+    animation:cardSlideLeft 1s ease forwards;
+}
+
+.cards-wrapper.show .card-container:nth-child(2){
+    animation-delay:.3s;
+}
+
+@keyframes cardSlideLeft{
+    from{
+        opacity:0;
+        transform:translateX(-120px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
