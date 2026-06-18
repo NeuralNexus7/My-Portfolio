@@ -4,12 +4,18 @@
     justify-content:center;
     align-items:center;
     padding:100px 5%;
+
+    position:relative;
+    overflow:hidden;
 }
 
 .skills-container{
     display:grid;
-    grid-template-columns:repeat(5, 1fr);
+    grid-template-columns:repeat(5,1fr);
     gap:20px;
+
+    position:relative;
+    z-index:2;
 }
 
 .skill-box{
@@ -18,25 +24,19 @@
 
     display:flex;
     align-items:center;
-    justify-content:flex-start;
     gap:12px;
 
     padding:0 15px;
 
-    border:2px solid #000000;
+    border:2px solid #000;
     border-radius:40px;
 
-    background:rgba(255,255,255,0.05);
-    background-color: rgb(44, 42, 42);
+    background:#2c2a2a;
 
     color:white;
-    font-size:1rem;
     font-weight:600;
 
-    position:relative;
-    overflow:visible;
-
-    transition:all 0.3s ease;
+    transition:.3s;
 }
 
 .skill-box img{
@@ -44,27 +44,18 @@
     height:40px;
 
     object-fit:contain;
-    border-radius:50%;
 
-    background:transparent;
-    padding:5px;
-
-    position:relative;
-    z-index:2;
-
-    transition:all 0.35s ease;
+    transition:.35s;
 }
 
 .skill-box:hover{
     transform:translateY(-8px) scale(1.05);
+
     border-color:#ff4d4d;
+
+    box-shadow:0 0 20px rgba(255,0,0,.35);
 }
 
-/* IMAGE POPS OUTSIDE THE CARD */
 .skill-box:hover img{
-    transform:
-        scale(1.8)
-        translateY(-12px);
-
-    z-index:100;
+    transform:scale(1.8) translateY(-12px);
 }

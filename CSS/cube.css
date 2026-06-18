@@ -1,0 +1,224 @@
+/* =========================
+   RUBIK'S CUBE BACKGROUND
+========================= */
+
+.skills-bg{
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%) scale(1);
+
+    opacity:0.70;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    filter:
+        drop-shadow(0 0 25px rgba(255,0,0,.45))
+        drop-shadow(0 0 50px rgba(255,0,0,.25));
+}
+
+.scene{
+    width:220px;
+    height:220px;
+
+    position:relative;
+
+    perspective:1000px;
+}
+
+.cube{
+    width:100%;
+    height:100%;
+
+    position:relative;
+
+    transform-style:preserve-3d;
+
+    animation:spin 8s linear infinite;
+}
+
+.face{
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:6px;
+    padding:6px;
+
+    background:#050505;
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:8px;
+}
+
+/* =========================
+   CUBE BLOCKS
+========================= */
+
+.face div{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,.12),
+        inset 0 -2px 4px rgba(0,0,0,.3);
+}
+
+/* =========================
+   LOGOS
+========================= */
+
+.face div img{
+    width:70%;
+    height:70%;
+
+    object-fit:contain;
+
+    transition:.3s ease;
+}
+
+.face div:hover img{
+    transform:scale(1.1);
+}
+
+/* =========================
+   TECHNOLOGY COLORS
+========================= */
+
+.html{
+    background:linear-gradient(
+        135deg,
+        #ff7b00,
+        #ff4500
+    );
+}
+
+.css{
+    background:linear-gradient(
+        135deg,
+        #2196f3,
+        #0052cc
+    );
+}
+
+.js{
+    background:linear-gradient(
+        135deg,
+        #ffd600,
+        #ffea00
+    );
+}
+
+.react{
+    background:linear-gradient(
+        135deg,
+        #00d4ff,
+        #61dafb
+    );
+}
+
+.c{
+    background:linear-gradient(
+        135deg,
+        #283593,
+        #5c6bc0
+    );
+}
+
+.cpp{
+    background:linear-gradient(
+        135deg,
+        #00599c,
+        #6a5acd
+    );
+}
+
+.python{
+    background:linear-gradient(
+        135deg,
+        #3776ab,
+        #ffd43b
+    );
+}
+
+.sql{
+    background:linear-gradient(
+        135deg,
+        #336791,
+        #00bcd4
+    );
+}
+
+.git{
+    background:linear-gradient(
+        135deg,
+        #f05032,
+        #ff7043
+    );
+}
+
+.github{
+    background:linear-gradient(
+        135deg,
+        #24292e,
+        #444d56
+    );
+}
+
+/* =========================
+   CUBE FACES
+========================= */
+
+.front{
+    transform:translateZ(110px);
+}
+
+.back{
+    transform:rotateY(180deg) translateZ(110px);
+}
+
+.right{
+    transform:rotateY(90deg) translateZ(110px);
+}
+
+.left{
+    transform:rotateY(-90deg) translateZ(110px);
+}
+
+.top{
+    transform:rotateX(90deg) translateZ(110px);
+}
+
+.bottom{
+    transform:rotateX(-90deg) translateZ(110px);
+}
+
+/* =========================
+   ROTATION
+========================= */
+
+@keyframes spin{
+
+    0%{
+        transform:rotateX(-25deg) rotateY(0deg);
+    }
+
+    100%{
+        transform:rotateX(-25deg) rotateY(360deg);
+    }
+}
