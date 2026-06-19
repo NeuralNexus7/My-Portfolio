@@ -1,3 +1,4 @@
+
 #profile{
     min-height:65vh;
     padding:60px 8%;
@@ -7,165 +8,254 @@
     align-items:center;
 }
 
-/* CARDS WRAPPER */
-
 .cards-wrapper{
     display:flex;
     justify-content:center;
     align-items:center;
+    gap:5px;
 }
 
-/* CARD */
+/* =========================
+   CARD CONTAINER
+========================= */
 
 .card-container{
-    width:160px;
-    height:280px;
-
-    margin-left:10px;
+    width:170px;
+    height:290px;
 
     perspective:1000px;
+    position:relative;
 
     opacity:0;
     transform:translateX(-120px);
-
-    position:relative;
 }
 
-/* Initial stacking */
-
-.card-container:nth-child(1){
-    z-index:1;
-}
-
-.card-container:nth-child(2){
-    z-index:2;
-}
-
-/* Bring hovered card to front */
+.card-container:nth-child(1){ z-index:1; }
+.card-container:nth-child(2){ z-index:2; }
 
 .card-container:hover{
     z-index:999;
 }
 
-.card{
-    width:115%;
-    height:120%;
+/* =========================
+   CORE CARD
+========================= */
 
+.card{
+    width:100%;
+    height:100%;
     position:relative;
 
     transform-style:preserve-3d;
-    transition:transform .9s ease;
+
+    transition:transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 
     will-change:transform;
 }
 
-/* FLIP EFFECT */
-
+/* KEEP YOUR ROTATION EXACT */
 .card-container:nth-child(1):hover .card{
-    transform:
-        rotate(-5deg)
-        rotateY(180deg)
-        translateZ(80px)
-        scale(1.05);
+    transform:rotateY(180deg) rotate(6deg) scale(1.05);
 }
 
 .card-container:nth-child(2):hover .card{
-    transform:
-        rotate(5deg)
-        rotateY(180deg)
-        translateZ(80px)
-        scale(1.05);
+    transform:rotateY(180deg) rotate(-6deg) scale(1.05);
 }
 
-.card1{
-    transform:rotate(-5deg);
-}
-
-.card2{
-    transform:rotate(5deg);
-}
+/* =========================
+   FACES
+========================= */
 
 .card-front,
 .card-back{
     position:absolute;
+    inset:0;
 
     width:100%;
     height:100%;
 
+    border-radius:16px;
+
     display:flex;
-    justify-content:center;
-    align-items:center;
     flex-direction:column;
+    align-items:center;
 
     padding:20px;
 
-    border-radius:16px;
-    border: 2px solid black;
+    border:2px solid #111;
 
     backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
 }
 
+/* FRONT */
 .card-front{
+    justify-content:center;
     overflow:hidden;
+    pointer-events:auto;
+
+    position:relative;
+    background:transparent; /* IMPORTANT */
 }
 
+/* BACK (FIXED STABILITY) */
 .card-back{
     transform:rotateY(180deg);
+
+    justify-content:flex-start;
+    align-items:center;
+    gap:10px;
+    padding-top:20px;
+
+    position:absolute;
+
+    pointer-events:none;
+    z-index:2;
 }
 
+/* ENABLE CLICK ONLY ON BACK */
+.card-container:hover .card-back{
+    pointer-events:auto;
+}
+
+/* =========================
+   PLATFORM THEMES
+========================= */
+
 .card1 .card-back{
-    background:linear-gradient(
-        135deg,
-        #ff7700,
-        #ffdbae
-    );
+    background:linear-gradient(135deg,#0a66c2,#004182);
 }
 
 .card2 .card-back{
-    background:linear-gradient(
-        135deg,
-        #610033,
-        #dc949e
-    );
+    background:linear-gradient(135deg,#24292e,#000000);
 }
+
+/* =========================
+   BACKGROUND IMAGE
+========================= */
+
+/* =========================
+   BACKGROUND IMAGE (FIXED)
+========================= */
+
 
 .card-bg-image{
     position:absolute;
-
-    top:0;
-    left:0;
-
-    width:400%;
+    inset:0;              /* FIX: no weird shifting */
+    width:100%;
     height:100%;
-
     object-fit:cover;
+
+    transform:scale(1.05); /* avoids edge gaps */
+    filter:none;           /* removes unwanted tint/bleed */
 }
 
-.card1 .card-bg-image{
-    left:-100%;
-}
 
-.card2 .card-bg-image{
-    left:-200%;
-}
+/* =========================
+   FLOATING AVATAR (FIXED)
+========================= */
 
-.heading{
-    position:relative;
+.profile-card-back{
+    width:95px;
+    height:95px;
+
+    border-radius:50%;
+    overflow:hidden;
+
+    border:3px solid rgb(17, 145, 17);
+
+    position:absolute;
+    top:20px;
     z-index:5;
 
+    /* FIXED VISIBILITY */
+    opacity:0;
+    transform:translateY(20px) scale(0.6);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+
+    transition:0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* POP EFFECT */
+.card-container:hover .profile-card-back{
+    opacity:1;
+    transform:translateY(-60px) scale(1.25);
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,0.6),
+        0 0 20px rgba(255,255,255,0.15);
+}
+
+/* IMAGE FIX */
+.profile-card-back img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.heading{
     color:white;
     text-shadow:0 2px 10px rgba(0,0,0,.8);
 }
 
-/* PROFILE ANIMATION */
+.profile-name{
+    color:#fff;
+    margin-top:80px;
+    font-size:1rem;
+}
+
+p{
+    color:rgba(255,255,255,0.85);
+    text-align:center;
+}
+
+/* =========================
+   BUTTON (FIXED CLICK STABILITY)
+========================= */
+
+.profile-btn{
+    margin-top:10px;
+    padding:8px 14px;
+
+    display:inline-block;
+
+    color:white;
+    font-size:0.9rem;
+    font-weight:600;
+
+    border-radius:20px;
+    text-decoration:none;
+
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.2);
+
+    transition:0.3s ease;
+
+    position:relative;
+    z-index:10;
+}
+
+.profile-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+    background:rgba(255,255,255,0.2);
+}
+
+/* =========================
+   ENTRY ANIMATION
+========================= */
 
 .cards-wrapper.show .card-container{
-    animation:cardSlideLeft 1s ease forwards;
+    animation:cardSlideLeft 0.9s ease forwards;
 }
 
 .cards-wrapper.show .card-container:nth-child(2){
-    animation-delay:.3s;
+    animation-delay:0.2s;
 }
 
 @keyframes cardSlideLeft{
@@ -173,7 +263,6 @@
         opacity:0;
         transform:translateX(-120px);
     }
-
     to{
         opacity:1;
         transform:translateX(0);

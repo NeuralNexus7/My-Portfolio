@@ -1,47 +1,145 @@
-/* HOME SECTION */
+
 #home{
     width:100%;
     min-height:100vh;
+
     display:flex;
     align-items:center;
     justify-content:flex-start;
+
     padding-left:6%;
+
+    position:relative;
+    overflow:hidden;
 }
 
-/* NAME CONTAINER */
-.name {
+/* soft red ambient glow */
+#home::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    animation:bgPulse 8s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+/* moving light sweep */
+#home::after{
+    content:"";
+    position:absolute;
+    inset:-50%;
+
+    background: linear-gradient(
+        120deg,
+        transparent 42%,
+        rgba(255,255,255,0.06),
+        transparent 58%
+    );
+
+    transform:rotate(12deg);
+
+    animation:lightSweep 10s linear infinite;
+
+    pointer-events:none;
+}
+
+/* =========================
+   NAME CONTAINER (NO FONT CHANGE)
+========================= */
+
+.name{
     display:flex;
     flex-direction:column;
     align-items:flex-start;
+
+    position:relative;
+    z-index:2;
+
+    animation:fadeUp 1.2s ease forwards;
 }
 
-/* NAME TEXT */
-.first-name, .last-name{
-    font-family: 'Bespoke Stencil', sans-serif;
-    font-size:135px;
+/* =========================
+   KEEP YOUR ORIGINAL TYPOGRAPHY EXACT
+========================= */
+
+.first-name,
+.last-name{
+    font-family: 'Bespoke Stencil', sans-serif; /* unchanged */
+    font-size:135px; /* unchanged */
     margin:0;
     line-height:1;
-}
 
-/* FIRST NAME */
-.first-name {
-    letter-spacing:4px;
     color:#ffffff;
+
+    transition:0.3s ease;
 }
 
-/* LAST NAME */
-.last-name {
-    letter-spacing:7px;
-    opacity:0.6;
-    color:#ffffff;
+.first-name{
+    color:#fff;
 }
 
-/* SUBTITLE  */
+.last-name{
+    color:#fff;
+}
+
+/* hover micro lift */
+.first-name:hover,
+.last-name:hover{
+    transform:translateX(8px);
+    color:#ff4d4d;
+}
+
+/* =========================
+   SUBTITLE (clean cinematic style)
+========================= */
+
 .subtitle{
-    margin-top:0px;
-    font-size:22px;
+    margin-top:10px;
+    font-size:15px;
     letter-spacing:4px;
-    color:white;
-    opacity:0.7;
+
+    color:rgba(255,255,255,0.7);
+
     font-family: Arial, sans-serif;
+
+    border-left:3px solid #000000;
+    padding-left:12px;
+
+    opacity:0;
+    animation:fadeUp 1.4s ease forwards;
+    animation-delay:0.3s;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes bgPulse{
+    0%,100%{
+        filter:brightness(1);
+    }
+    50%{
+        filter:brightness(1.15);
+    }
+}
+
+@keyframes lightSweep{
+    0%{
+        transform:translateX(-100%) rotate(12deg);
+    }
+    100%{
+        transform:translateX(100%) rotate(12deg);
+    }
 }

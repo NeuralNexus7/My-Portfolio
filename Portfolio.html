@@ -68,87 +68,143 @@
     </section>
 
     <!-- ABOUT -->
+<section id="about">
 
-    <section id="about">
+    <div class="about-card">
 
-        <div class="about-card">
+        <!-- Animated Border -->
+        <div class="border-svg">
+            <svg viewBox="0 0 500 500" preserveAspectRatio="none">
+                <rect
+                    class="border-path"
+                    x="2"
+                    y="2"
+                    width="496"
+                    height="496"
+                    rx="25"
+                    ry="25">
+                </rect>
+            </svg>
+        </div>
 
-            <div class="profile-image">
-                <img src="Images/Awanish.png" alt="Profile">
-            </div>
+        <!-- Profile Image (Pop Out Effect) -->
+        <div class="profile-image">
 
-            <h1>About Me</h1>
+            <div class="circle-frame"></div>
 
-            <div class="title-line"></div>
-
-            <p>
-                I'm Rudra Sharma, a B.Tech CSE (AIML) student passionate
-                about frontend development, UI animations and creating
-                modern web experiences.
-            </p>
+            <img src="Images/Awanish.png" alt="Rudra Sharma">
 
         </div>
+
+        <span class="about-tag">Frontend Developer</span>
+
+        <h1>About Me</h1>
+
+        <div class="title-line"></div>
+
+        <p>
+            I'm Rudra Sharma, a B.Tech CSE (AIML) student passionate about
+            frontend development, UI animations, and creating modern web experiences.
+            I enjoy building interactive websites, modern user interfaces,
+            and creative web animations that deliver engaging user experiences.
+        </p>
+
+        <div class="about-stats">
+
+            <div class="stat-box">
+                <h2>10+</h2>
+                <span>Projects</span>
+            </div>
+
+            <div class="stat-box">
+                <h2>2+</h2>
+                <span>Years Learning</span>
+            </div>
+
+            <div class="stat-box">
+                <h2>100%</h2>
+                <span>Passion</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
     </section>
 
     <!-- PROFILE -->
 
-    <section id="profile">
+<section id="profile">
 
-        <div class="cards-wrapper">
+    <div class="cards-wrapper">
 
-            <!-- EDUCATION CARD -->
+        <!-- LINKEDIN CARD -->
+        <div class="card-container">
 
-            <div class="card-container">
+            <div class="card card1">
 
-                <div class="card card1">
+                <div class="card-front">
+                    <img src="Images/image.webp" class="card-bg-image" alt="LinkedIn">
+                    <h2 class="heading">LinkedIn</h2>
+                </div>
 
-                    <div class="card-front">
+                <div class="card-back">
 
-                        <img src="Images/image.webp"
-                            class="card-bg-image"
-                            alt="Education">
-
-                        <h2 class="heading">Education</h2>
-
+                    <div class="profile-card-back">
+                        <img src="Images/Awanish.png" alt="Profile">
                     </div>
+                    
+                    <h4 class=profile-name> Rudra Sharma </h4>
 
-                    <div class="card-back">
-                        <p>B.Tech CSE (AIML)</p>
-                    </div>
+                    <p>Connect with me professionally</p>
+
+                    <a href="https://linkedin.com/in/yourusername"
+                       target="_blank"
+                       class="profile-btn">
+                        view
+                    </a>
 
                 </div>
 
             </div>
-
-            <!-- PASSION CARD -->
-
-            <div class="card-container">
-
-                <div class="card card2">
-
-                    <div class="card-front">
-
-                        <img src="Images/image.webp"
-                            class="card-bg-image"
-                            alt="Passion">
-
-                        <h2 class="heading">Passion</h2>
-
-                    </div>
-
-                    <div class="card-back">
-                        <p>Frontend Development & UI Design</p>
-                    </div>
-
-                </div>
-
-            </div>
-
         </div>
 
-    </section>
+        <!-- GITHUB CARD -->
+        <div class="card-container">
 
+            <div class="card card2">
+
+                <div class="card-front">
+                    <img src="Images/image.webp" class="card-bg-image" alt="GitHub">
+                    <h2 class="heading">GitHub</h2>
+                </div>
+
+                <div class="card-back">
+
+                    <div class="profile-card-back">
+                        <img src="Images/Awanish.png" alt="Profile">
+                    </div>
+                    
+                    <h4 class=profile-name> Rudra Sharma </h4>
+
+                    <p>Explore my projects & code</p>
+
+                    <a href="https://github.com/yourusername"
+                       target="_blank"
+                       class="profile-btn">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
     <!-- SKILLS -->
 
 <section id="skills">

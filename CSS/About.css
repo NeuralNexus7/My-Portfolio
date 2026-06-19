@@ -1,74 +1,94 @@
 #about{
     min-height:100vh;
-    padding:150px 8%;
+    padding:120px 8%;
 
     display:flex;
     justify-content:right;
     align-items:center;
-}
 
-/* ABOUT CARD */
+    background: transparent;
+}
+/* =========================
+   ABOUT CARD
+========================= */
 
 .about-card{
-    width:min(100%,500px);
-    min-height:500px;
+    width:min(100%,650px);
+    min-height:550px;
 
     position:relative;
-    padding:40px;
+    padding:50px;
 
-    border-radius:25px;
+    border-radius:30px;
 
-    background:#1a1a1a;
-    backdrop-filter:blur(15px);
+    background:rgba(26,26,26,.75);
+    backdrop-filter:blur(18px);
 
-    border:1px solid red;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.4),
+        0 0 35px rgba(255,0,0,.15);
 
     color:white;
+
+    overflow:visible;
 
     opacity:0;
     transform:translateX(120px);
 }
 
-.about-card h1{
-    font-size:3rem;
-    font-weight:700;
+/* =========================
+   SVG BORDER
+========================= */
 
-    margin-bottom:15px;
-
-    opacity:0;
-    transform:translateX(-60px);
+.border-svg{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
 }
 
-.title-line{
-    width:180px;
-    height:4px;
-
-    background:red;
-
-    border-radius:20px;
-    margin-bottom:30px;
+.border-svg svg{
+    width:100%;
+    height:100%;
 }
 
-.about-card p{
-    font-size:1.1rem;
-    line-height:1.9;
+.border-path{
+    fill:none;
 
-    color:rgba(255,255,255,.9);
+    stroke:#ff0000;
+    stroke-width:4;
+    stroke-linecap:round;
+
+    stroke-dasharray:120 1500;
+
+    filter:
+        drop-shadow(0 0 6px red)
+        drop-shadow(0 0 15px red);
+
+    animation:borderMove 5s linear infinite;
 }
 
-/* PROFILE IMAGE */
+@keyframes borderMove{
+    to{
+        stroke-dashoffset:-1620;
+    }
+}
+
+/* =========================
+   PROFILE IMAGE (FINAL POP EFFECT)
+========================= */
 
 .profile-image{
     position:absolute;
-
     top:-45px;
     right:30px;
 
-    width:120px;
-    height:120px;
+    width:150px;
+    height:150px;
 
     border-radius:50%;
+    overflow:hidden;
 
     background:linear-gradient(
         135deg,
@@ -78,34 +98,61 @@
         #700303
     );
 
-    border:4px solid green;
+    border:4px solid rgb(17, 145, 17);
+
+    z-index:100;
 
     opacity:0;
-    transform:scale(0);
+    transform:scale(0.4) translateY(20px);
 
-    transition:.35s;
+    transition:0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .profile-image img{
     width:100%;
     height:100%;
-
     object-fit:cover;
     border-radius:50%;
 }
 
-.profile-image:hover{
-    transform:scale(1.15) translateY(-8px);
+/* POP ANIMATION ON LOAD */
+.about-card.show .profile-image{
+    opacity:1;
+    transform:scale(1.05) translateY(-10px);
 }
 
-.profile-image:hover img{
-    transform:scale(1.45) translateY(-18px);
+/* HOVER FLOAT */
+.about-card.show .profile-image:hover{
+    transform:scale(1.18) translateY(-18px);
 }
 
-/* ABOUT ANIMATION */
+/* =========================
+   TAG
+========================= */
 
-.about-card.show{
-    animation:aboutSlideRight 1s ease forwards;
+.about-tag{
+    display:inline-block;
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    background:rgba(255,0,0,.12);
+    border:1px solid rgba(255,0,0,.4);
+
+    color:#ff4d4d;
+    margin-bottom:20px;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.about-card h1{
+    font-size:3rem;
+    margin-bottom:15px;
+
+    opacity:0;
+    transform:translateX(-60px);
 }
 
 .about-card.show h1{
@@ -113,10 +160,83 @@
     animation-delay:.7s;
 }
 
-.about-card.show .profile-image{
-    animation:profilePop .8s ease forwards;
-    animation-delay:1s;
+/* =========================
+   LINE
+========================= */
+
+.title-line{
+    width:160px;
+    height:4px;
+
+    border-radius:50px;
+    background:#ff0000;
+
+    margin-bottom:25px;
+
+    box-shadow:
+        0 0 10px red,
+        0 0 20px red;
 }
+
+/* =========================
+   TEXT
+========================= */
+
+.about-card p{
+    font-size:1.1rem;
+    line-height:1.9;
+    color:rgba(255,255,255,.85);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.about-stats{
+    display:flex;
+    gap:15px;
+    margin-top:40px;
+}
+
+.stat-box{
+    flex:1;
+    padding:18px;
+    border-radius:15px;
+
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+    transition:.3s;
+}
+
+.stat-box:hover{
+    transform:translateY(-8px);
+    border-color:red;
+
+    box-shadow:0 0 20px rgba(255,0,0,.2);
+}
+
+.stat-box h2{
+    color:#ff3b3b;
+    margin-bottom:5px;
+}
+
+.stat-box span{
+    color:rgba(255,255,255,.7);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+.about-card.show{
+    animation:aboutSlideRight 1s ease forwards;
+}
+
+/* =========================
+   KEYFRAMES
+========================= */
 
 @keyframes aboutSlideRight{
     from{
@@ -137,16 +257,5 @@
     to{
         opacity:1;
         transform:translateX(0);
-    }
-}
-
-@keyframes profilePop{
-    from{
-        opacity:0;
-        transform:scale(0);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
     }
 }
