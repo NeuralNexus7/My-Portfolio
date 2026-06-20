@@ -1,13 +1,12 @@
-
 #home{
     width:100%;
     min-height:100vh;
 
     display:flex;
+    justify-content:space-between;   /* IMPORTANT FIX */
     align-items:center;
-    justify-content:flex-start;
 
-    padding-left:6%;
+    padding:0 6%;
 
     position:relative;
     overflow:hidden;
@@ -30,7 +29,6 @@
     position:absolute;
     inset:-50%;
 
-
     transform:rotate(12deg);
 
     animation:lightSweep 10s linear infinite;
@@ -39,7 +37,15 @@
 }
 
 /* =========================
-   NAME CONTAINER (NO FONT CHANGE)
+   LEFT SIDE
+========================= */
+
+.home-left{
+    z-index:2;
+}
+
+/* =========================
+   NAME CONTAINER
 ========================= */
 
 .name{
@@ -53,39 +59,25 @@
     animation:fadeUp 1.2s ease forwards;
 }
 
-/* =========================
-   KEEP YOUR ORIGINAL TYPOGRAPHY EXACT
-========================= */
-
+/* TYPOGRAPHY (UNCHANGED) */
 .first-name,
 .last-name{
-    font-family: 'Bespoke Stencil', sans-serif; /* unchanged */
-    font-size:135px; /* unchanged */
+    font-family: 'Bespoke Stencil', sans-serif;
+    font-size:135px;
     margin:0;
     line-height:1;
 
     color:#ffffff;
-
     transition:0.3s ease;
 }
 
-.first-name{
-    color:#fff;
-}
-
-.last-name{
-    color:#fff;
-}
-
-/* hover micro lift */
 .first-name:hover,
 .last-name:hover{
     transform:translateX(8px);
-    color:#ffffff;
 }
 
 /* =========================
-   SUBTITLE (clean cinematic style)
+   SUBTITLE
 ========================= */
 
 .subtitle{
@@ -97,12 +89,29 @@
 
     font-family: Arial, sans-serif;
 
-    border-left:3px solid #000000;
+    border-left:3px solid #000;
     padding-left:12px;
 
     opacity:0;
     animation:fadeUp 1.4s ease forwards;
     animation-delay:0.3s;
+}
+
+/* =========================
+   RIGHT SIDE IMAGE
+========================= */
+
+.home-right{
+    flex-shrink:0;
+    z-index:2;
+}
+
+.home-img{
+    width:450px;
+    height:auto;
+    object-fit:cover;
+
+    animation:fadeUp 1.2s ease forwards;
 }
 
 /* =========================
@@ -121,12 +130,8 @@
 }
 
 @keyframes bgPulse{
-    0%,100%{
-        filter:brightness(1);
-    }
-    50%{
-        filter:brightness(1.15);
-    }
+    0%,100%{ filter:brightness(1); }
+    50%{ filter:brightness(1.15); }
 }
 
 @keyframes lightSweep{

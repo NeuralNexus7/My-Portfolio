@@ -1,3 +1,6 @@
+/* =========================
+   PROFILE SECTION LAYOUT
+========================= */
 
 #profile{
     min-height:65vh;
@@ -8,11 +11,39 @@
     align-items:center;
 }
 
+/* NEW WRAPPER (IMPORTANT FIX) */
+.profile-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 100px;
+    width:100%;
+}
+
+/* =========================
+   CARDS WRAPPER
+========================= */
+
 .cards-wrapper{
     display:flex;
     justify-content:center;
     align-items:center;
     gap:5px;
+}
+
+/* =========================
+   RIGHT SIDE IMAGE
+========================= */
+
+.profile-sectionn-left-photo{
+    flex-shrink:0;
+}
+
+.left-photo{
+    width:260px;
+    height:auto;
+    object-fit:cover;
+    border-radius:10px;
 }
 
 /* =========================
@@ -53,7 +84,7 @@
     will-change:transform;
 }
 
-/* KEEP YOUR ROTATION EXACT */
+/* ROTATION */
 .card-container:nth-child(1):hover .card{
     transform:rotateY(180deg) rotate(6deg) scale(1.05);
 }
@@ -92,13 +123,10 @@
 .card-front{
     justify-content:center;
     overflow:hidden;
-    pointer-events:auto;
-
-    position:relative;
-    background:transparent; /* IMPORTANT */
+    background:transparent;
 }
 
-/* BACK (FIXED STABILITY) */
+/* BACK */
 .card-back{
     transform:rotateY(180deg);
 
@@ -107,19 +135,16 @@
     gap:10px;
     padding-top:20px;
 
-    position:absolute;
-
     pointer-events:none;
     z-index:2;
 }
 
-/* ENABLE CLICK ONLY ON BACK */
 .card-container:hover .card-back{
     pointer-events:auto;
 }
 
 /* =========================
-   PLATFORM THEMES
+   THEMES
 ========================= */
 
 .card1 .card-back{
@@ -134,25 +159,19 @@
    BACKGROUND IMAGE
 ========================= */
 
-/* =========================
-   BACKGROUND IMAGE (FIXED)
-========================= */
-
-
 .card-bg-image{
     position:absolute;
-    inset:0;              /* FIX: no weird shifting */
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
 
-    transform:scale(1.05); /* avoids edge gaps */
-    filter:none;           /* removes unwanted tint/bleed */
+    transform:scale(1.05);
+    filter:none;
 }
 
-
 /* =========================
-   FLOATING AVATAR (FIXED)
+   AVATAR POP
 ========================= */
 
 .profile-card-back{
@@ -166,9 +185,7 @@
 
     position:absolute;
     top:20px;
-    z-index:5;
 
-    /* FIXED VISIBILITY */
     opacity:0;
     transform:translateY(20px) scale(0.6);
 
@@ -177,7 +194,6 @@
     transition:0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* POP EFFECT */
 .card-container:hover .profile-card-back{
     opacity:1;
     transform:translateY(-60px) scale(1.25);
@@ -187,7 +203,6 @@
         0 0 20px rgba(255,255,255,0.15);
 }
 
-/* IMAGE FIX */
 .profile-card-back img{
     width:100%;
     height:100%;
@@ -216,7 +231,7 @@ p{
 }
 
 /* =========================
-   BUTTON (FIXED CLICK STABILITY)
+   BUTTON
 ========================= */
 
 .profile-btn{
@@ -247,7 +262,7 @@ p{
 }
 
 /* =========================
-   ENTRY ANIMATION
+   ANIMATION
 ========================= */
 
 .cards-wrapper.show .card-container{

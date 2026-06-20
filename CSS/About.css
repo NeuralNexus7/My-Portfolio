@@ -15,7 +15,7 @@
 }
 
 /* =========================
-   IMAGE BOX (LEFT SIDE)
+   LEFT SIDE (IMAGE BOX)
 ========================= */
 
 .about-image-box{
@@ -25,6 +25,16 @@
     height:380px;
 
     flex:0 0 380px;
+
+    /* animation */
+    opacity:0;
+    transform:translateX(-120px);
+    transition:all 0.9s ease;
+}
+
+.about-image-box.show{
+    opacity:1;
+    transform:translateX(0);
 }
 
 /* PHOTO */
@@ -32,20 +42,17 @@
 .about-photo{
     position:absolute;
 
-    top:55%;          /* moved slightly up */
-    left:50%;
+    top:55%;
+    left:52%;
 
     width:240px;
-    height:240px;
+    height:370px;
 
     object-fit:cover;
-    border-radius:50%;
-
-    transform:translate(-50%, -50%);
-
-    z-index:2;
+    border-radius:0;
 
     transform:translate(-50%, -60%);
+    z-index:2;
 }
 
 /* FRAME */
@@ -60,17 +67,16 @@
     object-fit:contain;
 
     z-index:3;
-
     pointer-events:none;
 }
 
 /* =========================
-   ABOUT CARD (RIGHT SIDE)
+   RIGHT SIDE (ABOUT CARD)
 ========================= */
 
 .about-card{
     width:100%;
-    max-width:520px;
+    max-width:600px;
     min-height:550px;
 
     position:relative;
@@ -87,9 +93,19 @@
         0 0 35px rgba(255,0,0,.15);
 
     color:white;
+
+    /* animation */
+    opacity:0;
+    transform:translateX(120px);
+    transition:all 0.9s ease;
 }
 
-/* BACKGROUND IMAGE (OPTIONAL INSIDE CARD) */
+.about-card.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* BACKGROUND IMAGE (OPTIONAL) */
 
 .about-card-bg{
     position:absolute;
@@ -115,7 +131,7 @@
     z-index:1;
 }
 
-/* CONTENT ABOVE OVERLAY */
+/* CONTENT */
 
 .about-content{
     position:relative;
@@ -210,15 +226,12 @@
 
 .stat-box:hover{
     transform:translateY(-8px);
-
     border-color:red;
-
     box-shadow:0 0 20px rgba(255,0,0,.2);
 }
 
 .stat-box h2{
     color:#ff3b3b;
-
     margin-bottom:5px;
 }
 
