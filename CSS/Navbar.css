@@ -7,6 +7,10 @@
     font-family:'Poppins',sans-serif;
 }
 
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar{
     position:fixed;
     top:25px;
@@ -22,19 +26,44 @@
     align-items:center;
     justify-content:space-between;
 
-    background:rgba(20,20,20,0.65);
+    border-radius:50px;
 
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    position:fixed;
+    z-index:1000;
+
+    /* BACKGROUND IMAGE */
+    background-image:url("../Images/navbar-bg-img.jpeg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    /* DARK OVERLAY */
+    overflow:hidden;
 
     border:1px solid rgba(255,255,255,0.08);
 
-    border-radius:50px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
 
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.35);
+/* DARK LAYER */
+.navbar::before{
+    content:"";
+    position:absolute;
+    inset:0;
 
-    z-index:1000;
+    z-index:0;
+}
+
+/* CONTENT ABOVE LAYER */
+.navbar > *{
+    position:relative;
+    z-index:1;
+}
+
+/* GLASS EFFECT (optional but looks good) */
+.navbar{
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
 }
 
 .logo{

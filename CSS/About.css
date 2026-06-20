@@ -1,28 +1,84 @@
+/* =========================
+   ABOUT SECTION
+========================= */
+
 #about{
     min-height:100vh;
     padding:120px 8%;
 
     display:flex;
-    justify-content:right;
+    justify-content:center;
     align-items:center;
+    gap:60px;
 
-    background: transparent;
+    flex-wrap:nowrap;
 }
+
 /* =========================
-   ABOUT CARD
+   IMAGE BOX (LEFT SIDE)
+========================= */
+
+.about-image-box{
+    position:relative;
+
+    width:380px;
+    height:380px;
+
+    flex:0 0 380px;
+}
+
+/* PHOTO */
+
+.about-photo{
+    position:absolute;
+
+    top:55%;          /* moved slightly up */
+    left:50%;
+
+    width:240px;
+    height:240px;
+
+    object-fit:cover;
+    border-radius:50%;
+
+    transform:translate(-50%, -50%);
+
+    z-index:2;
+
+    transform:translate(-50%, -60%);
+}
+
+/* FRAME */
+
+.about-frame{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    z-index:3;
+
+    pointer-events:none;
+}
+
+/* =========================
+   ABOUT CARD (RIGHT SIDE)
 ========================= */
 
 .about-card{
-    width:min(100%,650px);
+    width:100%;
+    max-width:520px;
     min-height:550px;
 
     position:relative;
+    overflow:hidden;
+
     padding:50px;
 
     border-radius:30px;
-
-    background:rgba(26,26,26,.75);
-    backdrop-filter:blur(18px);
 
     border:1px solid rgba(255,255,255,.08);
 
@@ -31,99 +87,39 @@
         0 0 35px rgba(255,0,0,.15);
 
     color:white;
-
-    overflow:visible;
-
-    opacity:0;
-    transform:translateX(120px);
 }
 
-/* =========================
-   SVG BORDER
-========================= */
+/* BACKGROUND IMAGE (OPTIONAL INSIDE CARD) */
 
-.border-svg{
+.about-card-bg{
     position:absolute;
     inset:0;
-    pointer-events:none;
-}
 
-.border-svg svg{
     width:100%;
     height:100%;
-}
 
-.border-path{
-    fill:none;
-
-    stroke:#ff0000;
-    stroke-width:4;
-    stroke-linecap:round;
-
-    stroke-dasharray:120 1500;
-
-    filter:
-        drop-shadow(0 0 6px red)
-        drop-shadow(0 0 15px red);
-
-    animation:borderMove 5s linear infinite;
-}
-
-@keyframes borderMove{
-    to{
-        stroke-dashoffset:-1620;
-    }
-}
-
-/* =========================
-   PROFILE IMAGE (FINAL POP EFFECT)
-========================= */
-
-.profile-image{
-    position:absolute;
-    top:-45px;
-    right:30px;
-
-    width:150px;
-    height:150px;
-
-    border-radius:50%;
-    overflow:hidden;
-
-    background:linear-gradient(
-        135deg,
-        #200101,
-        #310404,
-        #420505,
-        #700303
-    );
-
-    border:4px solid rgb(17, 145, 17);
-
-    z-index:100;
-
-    opacity:0;
-    transform:scale(0.4) translateY(20px);
-
-    transition:0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.profile-image img{
-    width:100%;
-    height:100%;
     object-fit:cover;
-    border-radius:50%;
+
+    z-index:0;
 }
 
-/* POP ANIMATION ON LOAD */
-.about-card.show .profile-image{
-    opacity:1;
-    transform:scale(1.05) translateY(-10px);
+/* DARK OVERLAY */
+
+.about-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.60);
+
+    z-index:1;
 }
 
-/* HOVER FLOAT */
-.about-card.show .profile-image:hover{
-    transform:scale(1.18) translateY(-18px);
+/* CONTENT ABOVE OVERLAY */
+
+.about-content{
+    position:relative;
+    z-index:2;
 }
 
 /* =========================
@@ -132,14 +128,17 @@
 
 .about-tag{
     display:inline-block;
+
     padding:8px 18px;
 
     border-radius:30px;
 
     background:rgba(255,0,0,.12);
+
     border:1px solid rgba(255,0,0,.4);
 
     color:#ff4d4d;
+
     margin-bottom:20px;
 }
 
@@ -150,14 +149,6 @@
 .about-card h1{
     font-size:3rem;
     margin-bottom:15px;
-
-    opacity:0;
-    transform:translateX(-60px);
-}
-
-.about-card.show h1{
-    animation:headingSlide .8s ease forwards;
-    animation-delay:.7s;
 }
 
 /* =========================
@@ -165,13 +156,14 @@
 ========================= */
 
 .title-line{
-    width:160px;
+    width:120px;
     height:4px;
 
     border-radius:50px;
+
     background:#ff0000;
 
-    margin-bottom:25px;
+    margin-bottom:20px;
 
     box-shadow:
         0 0 10px red,
@@ -185,7 +177,8 @@
 .about-card p{
     font-size:1.1rem;
     line-height:1.9;
-    color:rgba(255,255,255,.85);
+
+    color:rgba(255,255,255,.9);
 }
 
 /* =========================
@@ -195,23 +188,29 @@
 .about-stats{
     display:flex;
     gap:15px;
+
     margin-top:40px;
 }
 
 .stat-box{
     flex:1;
+
     padding:18px;
+
     border-radius:15px;
 
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
 
     text-align:center;
+
     transition:.3s;
 }
 
 .stat-box:hover{
     transform:translateY(-8px);
+
     border-color:red;
 
     box-shadow:0 0 20px rgba(255,0,0,.2);
@@ -219,43 +218,47 @@
 
 .stat-box h2{
     color:#ff3b3b;
+
     margin-bottom:5px;
 }
 
 .stat-box span{
-    color:rgba(255,255,255,.7);
+    color:rgba(255,255,255,.8);
 }
 
 /* =========================
-   ANIMATION
+   RESPONSIVE
 ========================= */
 
-.about-card.show{
-    animation:aboutSlideRight 1s ease forwards;
-}
+@media (max-width:900px){
 
-/* =========================
-   KEYFRAMES
-========================= */
+    #about{
+        flex-direction:column;
+        gap:50px;
+        padding:80px 5%;
+    }
 
-@keyframes aboutSlideRight{
-    from{
-        opacity:0;
-        transform:translateX(120px);
+    .about-image-box{
+        width:300px;
+        height:300px;
+        flex:unset;
     }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
 
-@keyframes headingSlide{
-    from{
-        opacity:0;
-        transform:translateX(-60px);
+    .about-photo{
+        width:200px;
+        height:200px;
     }
-    to{
-        opacity:1;
-        transform:translateX(0);
+
+    .about-card{
+        width:100%;
+        padding:30px;
+    }
+
+    .about-card h1{
+        font-size:2.2rem;
+    }
+
+    .about-stats{
+        flex-direction:column;
     }
 }
