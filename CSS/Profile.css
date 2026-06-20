@@ -40,7 +40,7 @@
 }
 
 .left-photo{
-    width:260px;
+    width:320px;
     height:auto;
     object-fit:cover;
     border-radius:10px;
@@ -124,6 +124,7 @@
     justify-content:center;
     overflow:hidden;
     background:transparent;
+    position:relative; /* IMPORTANT FIX for overlay image */
 }
 
 /* BACK */
@@ -168,6 +169,28 @@
 
     transform:scale(1.05);
     filter:none;
+    z-index:0;
+}
+
+/* =========================
+   NEW OVERLAY IMAGE (FRONT TOP IMAGE)
+========================= */
+
+.card-overlay-image{
+    position:absolute;
+    top:0px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:200px;
+    height:250px;
+
+    object-fit:contain;
+
+    z-index:2;
+    pointer-events:none;
+
+    opacity:0.95;
 }
 
 /* =========================
