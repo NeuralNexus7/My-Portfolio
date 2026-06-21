@@ -60,7 +60,7 @@
             <h1 class="last-name">Sharma</h1>
 
             <div class="subtitle">
-                <p>I am a Computer Science Engineer</p>
+                <p class="home-text">I am a Computer Science Engineer</p>
             </div>
 
         </div>
@@ -77,23 +77,33 @@
     <!-- Left Side Image -->
     <div class="about-image-box">
 
-        <img class="about-photo"
-             src="Images/Awanish01.png"
-             alt="Rudra Sharma">
+        <!-- NEW WRAPPER (IMPORTANT FIX) -->
+        <div class="image-inner">
 
-        <img class="about-frame"
-             src="Images/frame.png"
-             alt="Frame">
+            <img class="about-photo"
+                 src="Images/Awanish01.png"
+                 alt="Rudra Sharma">
+
+            <img class="about-frame"
+                 src="Images/frame.png"
+                 alt="Frame">
+
+        </div>
 
     </div>
     
 
+    <!-- Right Side Card -->
     <div class="about-card">
 
         <img class="about-logo" src="Images/octopus.png" alt="Logo">
 
         <img class="about-card-bg"
              src="Images/about-bg.jpeg"
+             alt="Background">
+
+        <img class="about-card-design-bg"
+             src="Images/about-design-bg.png"
              alt="Background">
 
         <div class="about-content">
@@ -104,31 +114,12 @@
 
             <div class="title-line"></div>
 
-            <p>
+            <p class="about-text">
                 I'm Rudra Sharma, a B.Tech CSE (AIML) student passionate about
                 frontend development, UI animations, and creating modern web experiences.
                 I enjoy building interactive websites, modern user interfaces,
                 and creative web animations that deliver engaging user experiences.
             </p>
-
-            <div class="about-stats">
-
-                <div class="stat-box">
-                    <h2>10+</h2>
-                    <span>Projects</span>
-                </div>
-
-                <div class="stat-box">
-                    <h2>2+</h2>
-                    <span>Years Learning</span>
-                </div>
-
-                <div class="stat-box">
-                    <h2>100%</h2>
-                    <span>Passion</span>
-                </div>
-
-            </div>
 
         </div>
 
@@ -405,7 +396,8 @@
     <!-- JAVASCRIPT -->
 
     <script src="JS/Navbar.js"></script>
-    <script src="JS/about.js"></script>
+    <script src="Js/Home.js"></script>
+    <script src="Js/About.js"></script>
     <script src="JS/profile.js"></script>
     <script src="Js/Skill.js"></script>
 
