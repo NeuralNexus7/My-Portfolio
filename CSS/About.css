@@ -1,4 +1,3 @@
-
 /* =========================
    ABOUT SECTION
 ========================= */
@@ -8,6 +7,8 @@
     padding:120px 8%;
 
     display:flex;
+    flex-direction:row-reverse;
+
     justify-content:center;
     align-items:center;
     gap:40px;
@@ -16,8 +17,7 @@
 }
 
 /* =========================
-   LEFT SIDE (IMAGE BOX)
-   SCROLL ONLY
+   IMAGE BOX
 ========================= */
 
 .about-image-box{
@@ -25,37 +25,20 @@
 
     width:380px;
     height:380px;
+
     flex:0 0 380px;
 
-    opacity:0;
-    transform:translateX(-120px);
-
-    transition:
-        transform .9s cubic-bezier(.22,1,.36,1),
-        opacity .9s ease;
-}
-
-/* visible state */
-.about-image-box.show{
-    opacity:1;
-    transform:translateX(0);
+    margin:0;
 }
 
 /* =========================
-   INNER WRAPPER (HOVER FIX)
+   INNER WRAPPER
 ========================= */
 
 .image-inner{
     position:relative;
     width:100%;
     height:100%;
-
-    transition:transform .45s ease;
-}
-
-/* hover ONLY here (FIXED) */
-.about-image-box:hover .image-inner{
-    transform:scale(1.25) rotate(-2deg);
 }
 
 /* =========================
@@ -64,6 +47,7 @@
 
 .about-photo{
     position:absolute;
+
     top:50%;
     left:50%;
 
@@ -73,6 +57,7 @@
     object-fit:cover;
 
     transform:translate(-50%, -50%);
+
     z-index:2;
 }
 
@@ -86,15 +71,16 @@
 
     width:100%;
     height:100%;
+
     object-fit:contain;
 
     z-index:3;
+
     pointer-events:none;
 }
 
 /* =========================
    ABOUT CARD
-   SCROLL + HOVER
 ========================= */
 
 .about-card{
@@ -106,36 +92,12 @@
     overflow:hidden;
 
     padding:50px;
-    border-radius:28px;
+
+    border-radius:22px;
 
     border:1px solid rgba(255,255,255,.08);
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.45),
-        0 0 30px rgba(255,0,0,.12);
-
     color:white;
-
-    opacity:0;
-    transform:translateX(120px);
-
-    transition:
-        transform .9s cubic-bezier(.22,1,.36,1),
-        opacity .9s ease,
-        box-shadow .45s ease,
-        border-color .45s ease;
-}
-
-/* visible */
-.about-card.show{
-    opacity:1;
-    transform:translateX(0);
-}
-
-/* hover */
-.about-card:hover{
-    transform:rotate(-0.8deg) scale(1.05);
-    border-color:rgba(255,0,0,.4);
 }
 
 /* =========================
@@ -149,13 +111,14 @@
 
     width:100%;
     height:100%;
+
     object-fit:cover;
 
     z-index:0;
 }
 
 .about-card-design-bg{
-    transform:scale(1.03);
+    transform:scale(1.1);
 }
 
 /* =========================
@@ -164,6 +127,7 @@
 
 .about-logo{
     position:absolute;
+
     top:20px;
     right:45px;
 
@@ -173,24 +137,22 @@
     object-fit:contain;
 
     z-index:5;
+
     opacity:.9;
-
-    transition:transform .4s ease;
-}
-
-.about-card:hover .about-logo{
-    transform:rotate(8deg) scale(1.05);
 }
 
 /* =========================
-   DARK OVERLAY
+   OVERLAY
 ========================= */
 
 .about-card::before{
     content:"";
+
     position:absolute;
     inset:0;
+
     background:rgba(0,0,0,.60);
+
     z-index:1;
 }
 
@@ -209,6 +171,7 @@
 
 .about-tag{
     display:inline-block;
+
     padding:8px 18px;
 
     border-radius:30px;
@@ -217,7 +180,9 @@
     border:1px solid rgba(255,0,0,.35);
 
     color:#ff4d4d;
+
     margin-bottom:20px;
+
     font-size:.95rem;
 }
 
@@ -225,10 +190,11 @@
    HEADING
 ========================= */
 
-.about-card h1{
+.about-card h2{
     font-size:3rem;
-    margin-bottom:15px;
     line-height:1.1;
+
+    margin-bottom:15px;
 }
 
 /* =========================
@@ -251,24 +217,14 @@
 }
 
 /* =========================
-   TEXT (TYPEWRITER)
+   TEXT
 ========================= */
 
 .about-text{
     font-size:1.05rem;
     line-height:1.9;
+
     color:rgba(255,255,255,.88);
-}
-
-/* blinking cursor */
-.about-text::after{
-    content:"|";
-    margin-left:3px;
-    animation:blink 0.8s infinite;
-}
-
-@keyframes blink{
-    50%{opacity:0;}
 }
 
 /* =========================
@@ -286,6 +242,7 @@
     .about-image-box{
         width:300px;
         height:300px;
+
         flex:none;
     }
 
@@ -296,11 +253,13 @@
 
     .about-card{
         height:auto;
+
         max-width:100%;
+
         padding:35px 25px;
     }
 
-    .about-card h1{
+    .about-card h2{
         font-size:2.2rem;
     }
 
@@ -311,6 +270,7 @@
     .about-logo{
         width:80px;
         height:80px;
+
         right:20px;
     }
 }
