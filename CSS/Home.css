@@ -1,9 +1,13 @@
+/* =========================
+   HOME SECTION
+========================= */
+
 #home{
     width:100%;
     min-height:100vh;
 
     display:flex;
-    flex-direction:row-reverse;
+    flex-direction:row;
 
     justify-content:space-between;
     align-items:center;
@@ -18,40 +22,28 @@
    BACKGROUND EFFECTS
 ========================= */
 
-/* soft ambient glow */
 #home::before{
     content:"";
     position:absolute;
     inset:0;
-
     pointer-events:none;
 
     animation:bgPulse 8s ease-in-out infinite;
 }
 
-/* moving light sweep */
 #home::after{
     content:"";
     position:absolute;
     inset:-50%;
 
     transform:rotate(12deg);
-
     pointer-events:none;
 
     animation:lightSweep 10s linear infinite;
 }
 
 /* =========================
-   LEFT SIDE
-========================= */
-
-.home-left{
-    z-index:2;
-}
-
-/* =========================
-   NAME CONTAINER
+   LEFT SIDE (TEXT)
 ========================= */
 
 .name{
@@ -65,23 +57,14 @@
     animation:fadeUp 1.2s ease forwards;
 }
 
-/* =========================
-   HERO TITLE
-========================= */
-
 .hero-title{
     font-family:'Bespoke Stencil', sans-serif;
-
     font-size:135px;
     line-height:1;
     margin:0;
 
     color:#fff;
 }
-
-/* =========================
-   SUBTITLE
-========================= */
 
 .subtitle{
     margin-top:10px;
@@ -94,26 +77,17 @@
     font-family:Arial, sans-serif;
 
     border-left:3px solid #ff0000;
-
     padding-left:12px;
 
     opacity:0;
 
-    animation:
-        fadeUp 1.4s ease forwards;
-
+    animation:fadeUp 1.4s ease forwards;
     animation-delay:.3s;
 }
-
-/* =========================
-   HOME TEXT
-========================= */
 
 .home-text{
     margin:0;
 }
-
-/* blinking cursor */
 
 .home-text::after{
     content:"|";
@@ -123,14 +97,13 @@
 }
 
 /* =========================
-   RIGHT SIDE IMAGE
+   RIGHT SIDE (IMAGE)
 ========================= */
 
 .home-right{
+    margin:0;
     flex-shrink:0;
     z-index:2;
-
-    margin:0;
 }
 
 .home-img{
@@ -138,7 +111,6 @@
     height:auto;
 
     object-fit:cover;
-
     display:block;
 
     animation:fadeUp 1.2s ease forwards;
@@ -149,7 +121,6 @@
 ========================= */
 
 @keyframes fadeUp{
-
     from{
         opacity:0;
         transform:translateY(25px);
@@ -162,14 +133,12 @@
 }
 
 @keyframes blink{
-
     50%{
         opacity:0;
     }
 }
 
 @keyframes bgPulse{
-
     0%,100%{
         filter:brightness(1);
     }
@@ -180,7 +149,6 @@
 }
 
 @keyframes lightSweep{
-
     0%{
         transform:translateX(-100%) rotate(12deg);
     }
@@ -189,6 +157,10 @@
         transform:translateX(100%) rotate(12deg);
     }
 }
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width:900px){
 

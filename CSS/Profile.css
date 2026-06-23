@@ -296,6 +296,17 @@ p{
     animation-delay:0.2s;
 }
 
+.about-side-title{
+    width:40px;
+    height:100px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
 @keyframes cardSlideLeft{
     from{
         opacity:0;
