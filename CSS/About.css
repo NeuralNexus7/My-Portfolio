@@ -68,11 +68,14 @@
 
 .name-strip span{
     writing-mode:vertical-rl;
+
     font-size:4rem;
     font-weight:1000;
+
     font-family:'Nippo',sans-serif;
+
     letter-spacing:6px;
-    color:whitesmoke;
+    color: #171717;
 
     animation: nameFromImage 4.5s cubic-bezier(0.22,1,0.36,1) both;
     animation-timeline: view(block 70% 20%);
@@ -102,16 +105,19 @@
 ========================= */
 
 .details-box{
+    width: 600;
+    height:auto;
+
     grid-column:3;
     grid-row:1;
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:30px;
 }
 
 /* TITLE */
 .about-heading{
-    font-size:clamp(3rem,6vw,6rem);
+    font-size:clamp(3rem,6vw,7rem);
     font-weight:700;
     font-family:'Nippo',sans-serif;
     color:transparent;
@@ -162,7 +168,10 @@
 
 /* PARAGRAPH */
 .about-me-details p{
-    max-width:450px;
+    margin-top: -110px;
+    margin-left: 140px;
+
+    max-width:470px;
     color:#cfcfcf;
     line-height:1.9;
     font-size:1.05rem;
@@ -206,10 +215,11 @@
     grid-row:2;
     justify-self:end;
     align-self:start;
-    width:380px;
+    width:370px;
     padding:10px;
 
-    margin-top: -40px;
+    margin-top: -200px;
+    margin-right: -60px;
     animation: educationReveal 4.5s cubic-bezier(0.22,1,0.36,1) both;
     animation-timeline: view(block 70% 20%);
 }

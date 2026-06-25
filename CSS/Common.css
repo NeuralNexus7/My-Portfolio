@@ -8,15 +8,7 @@ body{
     min-height:100vh;
     overflow-x:hidden;
 
-background: linear-gradient(
-        135deg,
-        #2b0808 0%,
-        #5c1414 20%,
-        #791919 40%,
-        #8b1e1e 60%,
-        #921c1c 80%,
-        #912222 100%
-);
+background: #e5e5e5;
 
     transition:
         opacity .7s ease,
