@@ -123,6 +123,9 @@
     font-size:clamp(3rem,6vw,7rem);
     font-weight:700;
     font-family:'Nippo',sans-serif;
+
+    line-height: 60px;
+
     color:transparent;
     -webkit-text-stroke:3px #171717;
 
@@ -171,7 +174,7 @@
 
 /* PARAGRAPH */
 .about-me-details p{
-    margin-top: -110px;
+    margin-top: -70px;
     margin-left: 140px;
 
     max-width:470px;
@@ -235,11 +238,8 @@
     width:370px;
     padding:10px;
 
-    animation: educationReveal 4.5s cubic-bezier(0.22,1,0.36,1) both;
+    animation: educationReveal 1.5s cubic-bezier(0.22,1,0.36,1) both;
     animation-timeline:view(block 70% 20%);
-
-    animation:fadeUp 1.4s ease forwards;
-    animation-delay:.3s;
 }
 
 .education-box p::after{
@@ -251,19 +251,20 @@
 
 @keyframes educationReveal{
     0%{
-        transform:translateX(180px) translateY(60px);
+        transform: translateX(120px);
         opacity:0;
-        filter:blur(6px);
+        filter: blur(8px);
     }
 
-    50%{
+    60%{
         opacity:1;
-        filter:blur(0);
+        filter: blur(0);
     }
 
     100%{
-        transform:translateX(0);
+        transform: translateX(0);
         opacity:1;
+        filter: blur(0);
     }
 }
 
