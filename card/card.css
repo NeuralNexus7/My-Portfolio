@@ -1,3 +1,15 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background: #e5e5e5;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
 /* =========================
    PROFILE SECTION LAYOUT
 ========================= */
@@ -31,25 +43,6 @@
     gap:5px;
 }
 
-/* =========================
-   RIGHT SIDE IMAGE
-========================= */
-
-.profile-sectionn-left-photo{
-    flex-shrink:0;
-}
-
-.left-photo{
-    width:320px;
-    height:auto;
-    object-fit:cover;
-    border-radius:10px;
-}
-
-/* =========================
-   CARD CONTAINER
-========================= */
-
 .card-container{
     width:170px;
     height:290px;
@@ -68,9 +61,6 @@
     z-index:999;
 }
 
-/* =========================
-   CORE CARD
-========================= */
 
 .card{
     width:100%;
@@ -78,10 +68,12 @@
     position:relative;
 
     transform-style:preserve-3d;
-
     transition:transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 
     will-change:transform;
+
+    -webkit-transform-style:preserve-3d;
+    transform:translateZ(0);
 }
 
 /* ROTATION */
@@ -93,12 +85,18 @@
     transform:rotateY(180deg) rotate(-6deg) scale(1.05);
 }
 
-/* =========================
-   FACES
-========================= */
+.profile-name,
+.card-back p,
+.profile-btn,
+.profile-card-back{
+    transform:translateZ(50px);
+    -webkit-font-smoothing:antialiased;
+    backface-visibility:hidden;
+}
 
 .card-front,
 .card-back{
+
     position:absolute;
     inset:0;
 
@@ -117,6 +115,10 @@
 
     backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
+
+    transform-style:preserve-3d;
+
+    transform:translateZ(1px);
 }
 
 /* FRONT */
@@ -288,12 +290,12 @@ p{
    ANIMATION
 ========================= */
 
-.cards-wrapper.show .card-container{
-    animation:cardSlideLeft 0.9s ease forwards;
+.card-container{
+    animation:cardSlideLeft .9s ease forwards;
 }
 
-.cards-wrapper.show .card-container:nth-child(2){
-    animation-delay:0.2s;
+.card-container:nth-child(2){
+    animation-delay:.2s;
 }
 
 .about-side-title{
